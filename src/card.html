@@ -1,0 +1,357 @@
+<!DOCTYpE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Cam</title>
+    <link rel="stylesheet" href="../styles/card.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+</head>
+<body>
+
+<!-- Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex flex-column">
+    <nav class="navbar navbar-light bg-light d-flex justify-content-around" style="width: 1950px">
+        <a class="navbar-brand"><img src="../img/Logo.png"></a>
+        <p><img src="../img/geolocation2.png" class="pr-2">Выберите город: <strong>Петропавловск-Камчатский</strong></p>
+        <div class="d-flex flex-column">
+            <p><img src="../img/phone.png" class="pr-2">Для всех регионов:</p>
+            <h2>8 (958) 581-53-52</h2>
+        </div>
+        <div class="d-flex flex-column">
+            <p><img src="../img/phone.png" class="pr-2">Для Петропавловск-Камчатский:</p>
+            <h2>8 (800) 551-23-30</h2>
+        </div>
+        <div>
+
+            <p><img src="../img/basket2.png" class="pr-3 pb-2"><strong>2 000</strong> P</p>
+
+        </div>
+
+        <form class="form-inline">
+            <button type="button" class="btn btn-danger" id="callBackMe" data-toggle="modal"
+                    data-target="#exampleModal">Перезвоните мне
+            </button>
+        </form>
+    </nav>
+    <hr style="width: 1950px">
+    <div class="collapse navbar-collapse d-flex" id="navbarNavDropdown" style="width: 1950px">
+        <ul class="navbar-nav d-flex justify-content-around" style="width: 1950px">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Главная</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Каталог</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Доставка и оплата</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Полезная информация
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Акции</a>
+                    <a class="dropdown-item" href="#">Новости</a>
+                    <a class="dropdown-item" href="#">Статьи</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">О компании</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Контакты</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!--Modal call back -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Заполните заявку, чтобы мы смогли Вам перезвонить</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Ввеите ваше имя</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default" maxlength="20">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Номер телефона </span>
+                    <select id="country" class="form-control">
+                        <option value="ru">Россия +7</option>
+                        <option value="ua">Украина +380</option>
+                        <option value="by">Белоруссия +375</option>
+                    </select>
+                    <input id="phone" type="text" class="form-control" placeholder="+7 (___) ___ -__-__">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary" id="sendFormCall">Отправить заявку</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Body-->
+
+<div class="container">
+    <a href="#home" class="mt-5 mb-5"><img class="mt-4 mb-4" src="../img/home.png"> / Название товара</a>
+    <div class="d-flex flex-row">
+        <div style="width: 800px; height: 800px; border: 1px solid black">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner d-flex">
+                    <div class="carousel-item active">
+                        <img src="../img/simple_cam.png" class="d-block w-50"
+                             style="margin-left: 200px; margin-top: 100px" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../img/simple_cam.png" class="d-block w-50"
+                             style="margin-left: 200px; margin-top: 100px" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../img/simple_cam.png" class="d-block  w-50"
+                             style="margin-left: 200px; margin-top: 100px" alt="...">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"
+                   id="pred">
+                    <span class="" aria-hidden="true"><img src="../img/pred.png"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"
+                   id="next">
+                    <span aria-hidden="true"><img src="../img/next.png"></span>
+                    <span class="sr-only bg-primary">Next</span>
+                </a>
+            </div>
+            <h1 class="ml-5"><strong id="counter">01</strong> / <small>05</small>
+            </h1>
+        </div>
+        <div class="pl-5">
+            <h1 class="pb-5" style="font-size: 32px">Название товара "Самая лучшая камера"</h1>
+            <div class="d-flex pb-5 ">
+                <button class="btn text-white" id="decr"
+                        style=" width: 40px; height: 40px; background-color: midnightblue; border-radius: 10px 0 0 10px ">
+                    -
+                </button>
+                <input type="number" class="input-group" id="inpValue"
+                       style="height: 40px; width: 40px; outline: none; text-align: center; border: 1px solid midnightblue;"
+                       placeholder="1" maxlength="2" min="1" max="20" value="1">
+                <button class="btn text-white" id="incr"
+                        style="width: 40px; height: 40px; background-color: midnightblue; border-radius: 0 10px 10px 0">
+                    +
+                </button>
+                <h2 class="pl-5 text-secondary" id='oldPrice'>
+                    <del>12.000</del>
+                </h2>
+                <h2 class="pl-5" id='newPrice'>4.000</h2>
+            </div>
+
+            <div class="pb-5">
+                <button class="btn text-white mr-5 mb-2"
+                        style="width: 280px;background-color: midnightblue; border-radius: 10px">
+                    <img src="../img/basket.png">
+                    В корзину
+                </button>
+                <button class="btn text-dark bg-light  mb-2"
+                        style="width: 280px; border: 1px solid midnightblue; border-radius: 10px">
+                    Купить в один клик
+                </button>
+            </div>
+            <div>
+                <div class="d-flex justify-content-between">
+                    <div class="w-25">
+                        <img src="../img/geolocation.png">
+                        <ul class="pl-3" style="list-style: none">
+                            <p>В наличии:</p>
+                            <li>г. Петропавловск- Камчасткий: ул. Ленина 12</li>
+                            <li>г. Новосибирск: ул. Ленина 32</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="../img/purse.png">
+                        <ul class="pl-0">
+                            <p>Способы оплаты:</p>
+                            <li>Оплата при получении</li>
+                            <li>По счету для юр. лиц</li>
+                            <li>Безналичный расчет</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="../img/go_back.png">
+                        <p class="pl-2">Поделиться:</p>
+                        <div class="d-flex flex-row pl-2">
+                            <img src="../img/VK.png">
+                            <img src="../img/FB.png">
+                            <img src="../img/Twitter.png">
+                            <img src="../img/OK.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="pt-5 pb-5">
+        <div class="d-flex flex-column">
+            <div class="col-12">
+                <div class="list-group d-flex flex-row" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list"
+                       href="#list-home" role="tab" aria-controls="home">Описание</a>
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
+                       href="#list-profile" role="tab" aria-controls="profile">Характеристики</a>
+                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
+                       href="#list-messages" role="tab" aria-controls="messages">Отзывы</a>
+                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
+                       href="#list-settings" role="tab" aria-controls="settings">Вопрос-ответ</a>
+                </div>
+            </div>
+            <div>
+                <div class="tab-content col-md-8 offset-md-2" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="list-home" role="tabpanel"
+                         aria-labelledby="list-home-list">
+                        <p class="pt-5 pb-5"><strong>Описание для самой лучшей камеры</strong></p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias atque culpa iusto repudiandae
+                        voluptates. Accusantium, alias amet dicta obcaecati ratione sapiente sint. Aut distinctio,
+                        dolorem doloremque doloribus esse fugit incidunt ipsum, laborum maxime possimus quaerat quisquam
+                        saepe sed voluptate voluptatem.
+                    </div>
+                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                        <p class="pt-5 pb-5"><strong>Характеристики для самой лучшей камеры</strong></p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, recusandae, temporibus. Aperiam
+                        assumenda autem debitis iste repudiandae sint voluptates! Aliquam animi blanditiis cum cumque
+                        dignissimos doloribus eligendi ipsam laboriosam laudantium, magni provident qui quidem
+                        repellendus rerum ullam vel, vitae voluptate. Cupiditate debitis dolorum ipsum laborum, magnam
+                        molestiae optio quam voluptatum.
+                    </div>
+                    <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                        <div class="d-flex pt-5 pb-5 ">
+                            <div>
+                                <img class="pr-5 pt-4" src="../img/face1.png">
+                            </div>
+                            <div class="d-flex flex-column">
+                                <p><small>01.12.2019, 04:50</small></p>
+                                <h2>Инна Иванова</h2>
+                                <p class="pt-4" style="font-size: 16px">Можно ли установить глушилку сотовой связи в
+                                    автомобиль?</p>
+
+                            </div>
+                        </div>
+                        <hr class="w-100">
+                        <div class="d-flex pt-5 pb-5 ">
+                            <div>
+                                <img class="pr-5 pt-4" src="../img/face2.png">
+                            </div>
+                            <div class="d-flex flex-column">
+                                <p><small>01.12.2019, 18:11</small></p>
+                                <h2>Иван Николаев</h2>
+                                <p class="pt-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
+                                    amet aut corporis dolores
+                                    eius eos, hic ipsam laborum omnis optio, perferendis tempore temporibus!</p>
+                            </div>
+                        </div>
+                        <hr class="w-100">
+                        <div class="pt-5">
+                            <h1 class="pb-5" style="text-align: center"><strong>Оставить отзыв о товаре</strong></h1>
+                            <div>
+                                <div class="d-flex justify-content-around">
+                                    <h7>* Ваше имя</h7>
+                                    <h7>* Ваш телефон</h7>
+                                </div>
+                                <div class="input-group flex-nowrap">
+                                    <div class="input-group-prepend">
+                    <span class="input-group-text bg-light border-right-0 rounded-left"
+                          style="border-radius: 10px 0 0 10px; border: .5px solid #B9B9B9"><img
+                            src="../img/person.png"></span>
+                                    </div>
+                                    <input type="text" class="form-control mr-4 rounded-right border-left-0"
+                                           placeholder="Введите имя"
+                                           aria-label="Username" aria-describedby="addon-wrapping"
+                                           style="border-radius: 0 10px 10px 0; border: .5px solid #B9B9B9" maxlength="20">
+                                    <div class="input-group-prepend">
+                    <span class="input-group-text bg-light border-right-0 rounded-left"
+                          style="border-radius: 10px 0 0; border: .5px solid #B9B9B9"><img
+                            src="../img/phone.png"></span>
+                                    </div>
+                                    <input type="text" class="form-control rounded-right border-left-0"
+                                           placeholder="+7 (___) ___ -__-__"
+                                           aria-label="Username" aria-describedby="addon-wrapping"
+                                           style="border-radius: 0 10px 10px 0; border: .5px solid #B9B9B9"
+                                    id="phoneReview">
+                                </div>
+                            </div>
+                            <div class="form-group pt-4 text-center">
+                                <label for="exampleFormControlTextarea1">* Ваш отзыв</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                          style="border-radius: 10px; border: .5px solid #B9B9B9"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                        <p class="pt-5 pb-5"><strong>Вопрос-ответ для самой лучшей камеры</strong></p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolore, eos fugit libero
+                        officiis quos rem reprehenderit saepe sunt. Atque aut, commodi cumque cupiditate delectus dolore
+                        et excepturi explicabo fuga harum hic labore modi mollitia nostrum officia omnis, placeat porro
+                        quaerat quia quo sit, veniam voluptate voluptatum. Alias at eos quo.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1 class="pb-5 pt-5" style="text-align: center; font-size: 54px"><strong>ПОХОЖИЕ ТОВАРЫ</strong></h1>
+
+    <div class="col-md-4 offset-md-4 pb-5 mb-5">
+        <img src="../img/tCam.png" class="card-img-top" alt="...">
+        <div>
+            <h5 class="text-center pt-5 pb-5" style="font-size: 16px">Название товара</h5>
+            <div class="w-100 d-flex justify-content-around pb-3 pt-3" style="background-color: lightgray;">
+                <h1>
+                    <del style="color: gray;">12.000 P</del>
+                </h1>
+                <h1><strong> 4.000 P</strong></h1>
+            </div>
+            <div class="d-flex p-0 m-0">
+                <button
+                        id="buyOneClick"
+                        type="button"
+                        class="btn btn-lg w-50" style="border-radius: 0 0 0 10px; border: 1px solid midnightblue"
+                >Купить в один клик
+                </button>
+                <button
+                        id="buy"
+                        type="button"
+                        class="btn btn-lg w-50"
+                        style="border-radius: 0 0 10px 0; border: 1px solid midnightblue; background-color: midnightblue; color: white"
+                >Купить
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("#phone").mask("(999) 999-99-99")
+    $("#phoneReview").mask("(999) 999-99-99")
+</script>
+</body>
+</html>

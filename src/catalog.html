@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Catalog</title>
+    <link rel="stylesheet" href="../styles/catalog.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+</head>
+<body>
+
+<!-- Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex flex-column">
+    <nav class="navbar navbar-light bg-light d-flex justify-content-around" style="width: 1950px">
+        <a class="navbar-brand"><img src="../img/Logo.png"></a>
+        <p><img src="../img/geolocation2.png" class="pr-2">Выберите город: <strong>Петропавловск-Камчатский</strong></p>
+        <div class="d-flex flex-column">
+            <p><img src="../img/phone.png" class="pr-2">Для всех регионов:</p>
+            <h2>8 (958) 581-53-52</h2>
+        </div>
+        <div class="d-flex flex-column">
+            <p><img src="../img/phone.png" class="pr-2">Для Петропавловск-Камчатский:</p>
+            <h2>8 (800) 551-23-30</h2>
+        </div>
+        <div>
+
+            <p><img src="../img/basket2.png" class="pr-3 pb-2"><strong>2 000</strong> P</p>
+
+        </div>
+
+        <form class="form-inline">
+            <button type="button" class="btn btn-danger" id="callBackMe" data-toggle="modal"
+                    data-target="#exampleModal">Перезвоните мне
+            </button>
+        </form>
+    </nav>
+    <hr style="width: 1950px">
+    <div class="collapse navbar-collapse d-flex" id="navbarNavDropdown" style="width: 1950px">
+        <ul class="navbar-nav d-flex justify-content-around" style="width: 1950px">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Главная</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Каталог</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Доставка и оплата</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Полезная информация
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Акции</a>
+                    <a class="dropdown-item" href="#">Новости</a>
+                    <a class="dropdown-item" href="#">Статьи</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">О компании</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Контакты</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!--Modal call back -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Заполните заявку, чтобы мы смогли Вам перезвонить</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Ввеите ваше имя</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default" maxlength="20">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Номер телефона </span>
+                    <select id="country" class="form-control">
+                        <option value="ru">Россия +7</option>
+                        <option value="ua">Украина +380</option>
+                        <option value="by">Белоруссия +375</option>
+                    </select>
+                    <input id="phone" type="text" class="form-control" placeholder="+7 (___) ___ -__-__">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary" id="sendFormCall">Отправить заявку</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <a href="#home" class="mt-5 mb-5"><img class="mt-4 mb-4" src="../img/home.png"> / Название товара</a>
+    <h2 class="pb-5 pt-5">Каталог товаров</h2>
+    <div class="col-md-4 offset-md-4 pb-0 mb-5 w-25 pt-0 pr-0 pl-0"
+         style="border: 2px solid #4e555b; border-radius: 10px;">
+        <img src="../img/tCam.png" class="card-img-top" alt="...">
+        <div>
+            <h5 class="text-center pt-5 pb-5" style="font-size: 16px">Название товара</h5>
+            <div class="w-100 d-flex justify-content-around pb-3 pt-3" style="background-color: lightgray;">
+                <h1>
+                    <del style="color: gray;">12.000 P</del>
+                </h1>
+                <h1><strong> 4.000 P</strong></h1>
+            </div>
+            <div class="d-flex p-0 m-0 w-100">
+                <form action="./card.html" style="border-radius: 0 0 0 10px; border: 1px solid midnightblue"  class="btn btn-lg w-50">
+                    <button
+                            id="buyOneClick"
+                            type="submit"
+                            class="btn btn-lg w-50"
+                    >Узнать подробнее
+                    </button>
+                </form>
+                <button
+                        id="buy"
+                        type="button"
+                        class="btn btn-lg w-50"
+                        style="border-radius: 0 0 10px 0; border: 1px solid midnightblue; background-color: midnightblue; color: white"
+                >Купить
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("#phone").mask("(999) 999-99-99")
+</script>
+</body>
+</html>

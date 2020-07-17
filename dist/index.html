@@ -1,0 +1,258 @@
+<!DOCTYpE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+</head>
+<body>
+
+<!-- Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex flex-column">
+    <nav class="navbar navbar-light bg-light d-flex justify-content-around" style="width: 1950px">
+        <a class="navbar-brand"><img src="../img/Logo.png"></a>
+        <p><img src="../img/geolocation2.png" class="pr-2">Выберите город: <strong>Петропавловск-Камчатский</strong></p>
+        <div class="d-flex flex-column">
+            <p><img src="../img/phone.png" class="pr-2">Для всех регионов:</p>
+            <h2>8 (958) 581-53-52</h2>
+        </div>
+        <div class="d-flex flex-column">
+            <p><img src="../img/phone.png" class="pr-2">Для Петропавловск-Камчатский:</p>
+            <h2>8 (800) 551-23-30</h2>
+        </div>
+        <div>
+
+            <p><img src="../img/basket2.png" class="pr-3 pb-2"><strong>2 000</strong> P</p>
+
+        </div>
+
+        <form class="form-inline">
+            <button type="button" class="btn btn-danger" id="callBackMe" data-toggle="modal"
+                    data-target="#exampleModal">Перезвоните мне
+            </button>
+        </form>
+    </nav>
+    <hr style="width: 1950px">
+    <div class="collapse navbar-collapse d-flex" id="navbarNavDropdown" style="width: 1950px">
+        <ul class="navbar-nav d-flex justify-content-around" style="width: 1950px">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Главная</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./catalog.html">Каталог</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Доставка и оплата</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Полезная информация
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Акции</a>
+                    <a class="dropdown-item" href="#">Новости</a>
+                    <a class="dropdown-item" href="#">Статьи</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">О компании</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Контакты</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!--Modal call back -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Заполните заявку, чтобы мы смогли Вам перезвонить</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Ввеите ваше имя</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default" maxlength="20">
+                </div>
+                <div class="input-group-prepend mb-3">
+                    <span class="input-group-text">Номер телефона </span>
+                    <select id="country" class="form-control">
+                        <option value="ru">Россия +7</option>
+                        <option value="ua">Украина +380</option>
+                        <option value="by">Белоруссия +375</option>
+                    </select>
+                    <input id="phoneCons" type="text" class="form-control" placeholder="+7 (___) ___ -__-__">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary" id="sendFormCall">Отправить заявку</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal consultation-->
+<div class="modal fade" tabindex="-1" id="consModal" role="dialog" aria-labelledby="consModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Заполните все поля в форме и нажмите "Отправить"</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group f-flex flex-column">
+                    <div class="input-group-prepend pb-2">
+                    <span class="input-group-text rounded"><img
+                            src="../img/person.png"></span>
+                        <input type="text" class="form-control rounded" placeholder="Введите имя"
+                               aria-label="Username" aria-describedby="addon-wrapping" maxlength="20">
+                    </div>
+                    <div class="input-group-prepend ">
+                    <span class="input-group-text rounded"><img
+                            src="../img/phone.png"></span>
+                        <input type="text" class="form-control rounded" placeholder="+7 (___) ___ -__-__"
+                               aria-label="Username" aria-describedby="addon-wrapping" id="phoneIndex">
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown w-50 pl-3 pb-3">
+                <button class="btn btn-primary dropdown-toggle w-100" type="button" data-toggle="dropdown">Выберите тему
+                    <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <input class="form-control border-0 w-100" id="myInput" type="text" placeholder="Поиск...">
+                    <li class="ml-2"><a href="#">Покупка</a></li>
+                    <li class="ml-2"><a href="#">Скидки и акции</a></li>
+                    <li class="ml-2"><a href="#">Техническая консульатция</a></li>
+                    <li class="ml-2"><a href="#">Трудоустройство</a></li>
+                    <li class="ml-2"><a href="#">Другое</a></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary">Отправить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Body-->
+<div class="container">
+    <!--    Consultation-->
+    <div class="card-body">
+        <h1><strong>ПЕРСОНАЛЬНЫЕ РЕГИСТРАТОРЫ</strong></h1>
+        <h1>(НАГРУДНЫЕ КАМЕРЫ) ОТ 3990 <small>РУБ</small></h1>
+        <ul>
+            <li><img src="../img/Vector 4.png">В наличии в Петропавловск-Камчатском</li>
+            <li><img src="../img/Vector 4.png">Получение в день оформления заказа</li>
+        </ul>
+        <div class="d-flex justify-content-around" style="font-size: 12px; line-height: 16px;">
+            <h7>* Ваше имя</h7>
+            <h7>* Ваш телефон</h7>
+        </div>
+        <div class="input-group flex-nowrap">
+            <div class="input-group-prepend">
+                    <span class="input-group-text bg-light border-right-0 rounded-left"><img
+                            src="../img/person.png"></span>
+            </div>
+            <input type="text" class="form-control mr-4 rounded-right border-left-0" placeholder="Введите имя"
+                   aria-label="Username" aria-describedby="addon-wrapping" maxlength="20">
+            <div class="input-group-prepend">
+                    <span class="input-group-text bg-light border-right-0 rounded-left"><img
+                            src="../img/phone.png"></span>
+            </div>
+            <input type="text" class="form-control rounded-right border-left-0"
+                   placeholder="+7 (___) ___ -__-__"
+                   aria-label="Username" aria-describedby="addon-wrapping"
+            id="phone"
+            >
+        </div>
+        <button type="button" class="btn btn-outline-danger w-50 mt-4 bg-danger text-light" data-toggle="modal"
+                data-target="#consModal">Получить консультацию
+        </button>
+    </div>
+    <img src="../img/Mask%20Group.png">
+
+    <!--    Info-->
+    <div class="card p-5" style="height: 40rem; overflow: hidden; border: none; background-color: whitesmoke;">
+        <div>Кто и для чего применяют
+            <strong>персональные регистраторы?</strong>
+        </div>
+        <div class="btn-group m-4">
+            <button class="whoBtn">Кто?</button>
+            <button class="whyBtn">Для чего?</button>
+        </div>
+        <div class="bodyReg">
+            <div class="list">
+                <ul class="why">
+                    <li><span class="myNum">01</span>Запись видео в качестве доказательной базы при решении спорных
+                        и
+                        конфликтных ситуаций.
+                    </li>
+                    <li><span class="myNum">02</span>В качестве дополнительной безопасности в ситуациях, когда
+                        возникает
+                        провокация.
+                    </li>
+                    <li><span class="myNum">03</span>Снижение коррупционной составляющей в работе правоохранительных
+                        и
+                        иных органов.
+                    </li>
+                    <li><span class="myNum">04</span>Возможность выявления и разбора проблемы при чрезвычайных
+                        происшествиях.
+                    </li>
+                    <li><span class="myNum">05</span>Фиксация рабочего времени сотрудников с доказательной базой.
+                    </li>
+                    <li><span class="myNum">06</span>Для записи видео в научных и туристических экспедициях,
+                        путешествиях
+                    </li>
+                </ul>
+                <ul class="who">
+                    <li><span class="myNum">01</span>Сотрудники правоохранительных органов</li>
+                    <li><span class="myNum">02</span>Охранники</li>
+                    <li><span class="myNum">03</span>Егеря</li>
+                    <li><span class="myNum">04</span>Газовики</li>
+                    <li><span class="myNum">05</span>Шахтеры.</li>
+                    <li><span class="myNum">06</span>Пограничники</li>
+                    <li><span class="myNum">07</span>Инкассаторы</li>
+                    <li><span class="myNum">08</span>Экспедиторы</li>
+                    <li><span class="myNum">09</span>Курьеры</li>
+                    <li><span class="myNum">10</span>Блогеры</li>
+                    <li><span class="myNum">11</span>и еще около 97 сфер применения носимых регистраторов.</li>
+                </ul>
+            </div>
+            <div>
+                <img src="../img/cam.png" class="cam">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("#phone").mask("(999) 999-99-99")
+    $("#phoneIndex").mask("(999) 999-99-99")
+    $("#phoneCons").mask("(999) 999-99-99")
+</script>
+<script src="card.331d147cb134d150473f.js"></script><script src="index.c41c766cb9009781f352.js"></script></body>
+</html>
